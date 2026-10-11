@@ -1,0 +1,122 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background: #050505;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 15px;
+}
+
+h1 {
+    color: #00d9ff;
+    text-shadow: 0 0 15px #008cff;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.candles {
+    display: flex;
+    gap: 25px;
+    margin: 40px 0;
+}
+
+.candle {
+    width: 12px;
+    height: 90px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #0055ff, #58dfff);
+    position: relative;
+    animation: glow 1s infinite alternate;
+}
+
+.flame {
+    position: absolute;
+    width: 17px;
+    height: 27px;
+    background: #ff6a00;
+    border-radius: 50% 50% 40% 40%;
+    top: -28px;
+    left: -2px;
+    box-shadow: 0 0 15px #ff6a00;
+    animation: flicker 0.3s infinite alternate;
+}
+
+.flame::after {
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 14px;
+    background: #fff7a0;
+    border-radius: 50%;
+    top: 7px;
+    left: 5px;
+}
+
+.wishes {
+    max-width: 850px;
+    text-align: center;
+    line-height: 2.3;
+    font-size: 16px;
+}
+
+.wishes span {
+    display: inline-block;
+    margin: 0 7px;
+    color: #e78bff;
+    text-shadow: 0 0 8px #b000ff;
+    animation: appear 1s both;
+}
+
+.wishes span:nth-child(even) {
+    color: #32dfff;
+    text-shadow: 0 0 8px #007bff;
+}
+
+@keyframes appear {
+    from  {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+     to {
+            opacity: 1;
+            transform:translateY(0) ;
+    }    
+}
+
+@keyframes flicker {
+    from {
+        transform: scale(1) rotate(-2deg);
+        opacity: 1;
+        
+    }
+    to {
+            transform: scale(1.08) rotate(2deg);
+            opacity: 1;
+    }
+}
+
+@keyframes glow {
+    from {box-shadow: 0 0 5px #05f;}
+    to {box-shadow: 0 0 18px #58dfff;}
+}
+
+@media (max-width: 500px){
+    .candles {
+        gap: 17px;
+    }
+    .wishes {
+        font-size: 13px;
+    }
+    h1 {
+        font-size: 25px;
+    }
+}
